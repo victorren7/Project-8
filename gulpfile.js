@@ -24,7 +24,7 @@ gulp.task("scripts", function() {
 		.pipe(srcMaps.init())
 		.pipe(concat('all.js'))
 		.pipe(uglify())
-		.pipe(rename('all.js.min.js'))
+		.pipe(rename('all.min.js'))
 		.pipe(srcMaps.write('./'))
 		.pipe(gulp.dest('dist/scripts'))
 });
