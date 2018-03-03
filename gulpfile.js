@@ -1,18 +1,18 @@
 'use strict'
 
 //devdependencies & dependecies
-const gulp   	  = require('gulp');
-const concat 	  = reuqire('gulp-concat');
-const uglify 	  = require('gulp-uglify');
-const rename 	  = require('gulp-uglify');
-const rename 	  = require('gulp-rename');
-const sass        = require('gulp-sass');
-const cleanCSS    = require('gulp-clean-css');
-const srcMaps     = require('gulp-sourcemaps');
-const imagemin    = require('gulp-imagemin');
-const runSec      = require('run-sequence');
-const browserSync = require('browser-sync').create();
-const del         = require('del');
+var gulp   	  = require('gulp');
+var concat 	  = reuqire('gulp-concat');
+var uglify 	  = require('gulp-uglify');
+var rename 	  = require('gulp-uglify');
+var rename 	  = require('gulp-rename');
+var sass          = require('gulp-sass');
+var cleanCSS      = require('gulp-clean-css');
+var srcMaps       = require('gulp-sourcemaps');
+var imagemin      = require('gulp-imagemin');
+var runSec        = require('run-sequence');
+var browserSync   = require('browser-sync').create();
+var del           = require('del');
 
 //concatanate js files and saves them in files
 gulp.task("scripts", function() {
@@ -78,6 +78,12 @@ gulp.task("browserSync", function() {
 gulp.task('watch', ['browserSync', 'styles'], function (){
 	gulp.watch('sass/**.scss', ['styles']);
 })
+
+//run localhost:3000
+gulp.task("default", ["build"], function() {
+  connect.server({port: 3000});
+
+});
 
 
 
