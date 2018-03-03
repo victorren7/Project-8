@@ -1,18 +1,19 @@
 'use strict'
 
 //devdependencies & dependecies
-var gulp   	  = require('gulp');
-var concat 	  = require('gulp-concat');
-var uglify 	  = require('gulp-uglify');
-var rename 	  = require('gulp-uglify');
-var rename 	  = require('gulp-rename');
-var sass          = require('gulp-sass');
-var cleanCSS      = require('gulp-clean-css');
-var srcMaps       = require('gulp-sourcemaps');
-var imagemin      = require('gulp-imagemin');
-var runSec        = require('run-sequence');
-var browserSync   = require('browser-sync').create();
-var del           = require('del');
+const gulp   	    = require('gulp');
+const concat 	    = require('gulp-concat');
+const uglify 	    = require('gulp-uglify');
+const rename 	    = require('gulp-rename');
+const sass        = require('gulp-sass');
+const cleanCSS    = require('gulp-clean-css');
+const srcMaps     = require('gulp-sourcemaps');
+const imagemin    = require('gulp-imagemin');
+const runSec      = require('run-sequence');
+const browserSync = require('browser-sync').create();
+const del         = require('del');
+const connect       = require("gulp-connect");
+
 
 //concatanate js files and saves them in files
 gulp.task("scripts", function() {
@@ -30,7 +31,7 @@ gulp.task("scripts", function() {
 
 gulp.task("styles", function() {
   return gulp.src('sass/global.scss')
-  .pipe(srcMaps.init())                         
+  .pipe(srcMaps.init())
   .pipe(sass())
   .pipe(cleanCSS({compatibility: 'ie8'}))
   .pipe(rename('global.min.css'))
@@ -64,8 +65,8 @@ gulp.task("clean", function() {
 });
 
 //run tasks in sequence
-gulp.task("build", function() {              
-  runSequence("clean", ["scripts","styles","moveIndex","moveIcons","images"], "watch");
+gulp.task("build", function() {
+  runSec("clean", ["scripts","styles","moveIndex","moveIcons","images"], "watch");
 });
 
 
@@ -79,13 +80,9 @@ gulp.task('watch', ['browserSync', 'styles'], function (){
 	gulp.watch('sass/**.scss', ['styles']);
 })
 
+
 //run localhost:3000
 gulp.task("default", ["build"], function() {
   connect.server({port: 3000});
 
 });
-
-
-
-
-
