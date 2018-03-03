@@ -34,7 +34,7 @@ gulp.task("styles", function() {
   .pipe(srcMaps.init())
   .pipe(sass())
   .pipe(cleanCSS({compatibility: 'ie8'}))
-  .pipe(rename('global.min.css'))
+  .pipe(rename('all.min.css'))
   .pipe(srcMaps.write('./'))
   .pipe(gulp.dest('dist/styles'))
   .pipe(browserSync.reload({
