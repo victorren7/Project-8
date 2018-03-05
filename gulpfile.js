@@ -56,7 +56,7 @@ gulp.task("moveIndex", function() {
 
 gulp.task("moveIcons", function() {
 	return gulp.src(['icon/*'], { base: './'})
-	.pipe(gulp.dest('icons'))
+	.pipe(gulp.dest('dist/icons'))
 });
 
 //deletes all folders in dist
