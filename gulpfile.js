@@ -55,7 +55,7 @@ gulp.task("moveIndex", function() {
 });
 
 gulp.task("moveIcons", function() {
-	return gulp.src(['icon/*'], { base: './'})
+	return gulp.src(['icons/**/*.*'], { base: './'})
 	.pipe(gulp.dest('icons'))
 });
 
