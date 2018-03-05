@@ -24,7 +24,7 @@ gulp.task("scripts", function() {
 		.pipe(srcMaps.init())
 		.pipe(concat('all.js'))
 		.pipe(uglify())
-		.pipe(rename('all.js.min.js'))
+		.pipe(rename('all.min.js'))
 		.pipe(srcMaps.write('./'))
 		.pipe(gulp.dest('dist/scripts'))
 });
@@ -34,7 +34,7 @@ gulp.task("styles", function() {
   .pipe(srcMaps.init())
   .pipe(sass())
   .pipe(cleanCSS({compatibility: 'ie8'}))
-  .pipe(rename('all.js.min.css'))
+  .pipe(rename('all.min.css'))
   .pipe(srcMaps.write('./'))
   .pipe(gulp.dest('dist/styles'))
   .pipe(browserSync.reload({
