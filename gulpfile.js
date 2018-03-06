@@ -72,7 +72,7 @@ gulp.task("build", function() {
 
 //sets up server and watches for the changes
 gulp.task("browserSync", function() {
-	browserSync.init({ server: { baseDir: './dist'}, })
+	browserSync.init({ server: { baseDir: './'}, })
 })
 
 //watches for changes in scss
